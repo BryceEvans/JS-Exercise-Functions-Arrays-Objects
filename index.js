@@ -203,9 +203,13 @@ function sortCarInventory(inventory) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
+function getModelYears(inventory) {
   /* code here */
-
+  let carYears = []
+  for (let i = 0; i < inventory.length; i++) {
+    carYears.push(inventory[i].car_year)
+  }
+  return carYears
 }
 
 /**
@@ -220,8 +224,17 @@ function getModelYears(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
+function getOlderCars(inventory, year) {
   /* code here */
+  console.log(inventory)
+  console.log(year)
+  let olderCars = []
+  for (let i = 0; i < inventory.length; i++) {
+    if (inventory[i].car_year <= year) {
+      olderCars.push(inventory[i])
+    }
+  }
+  return olderCars
 }
 
 /**
@@ -235,8 +248,38 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(inventory) {
+  let germanCars = []
+  
+  for (let i = 0; i < inventory.length; i++) {
+    
+    let make = inventory[i].car_make
+    
+    if 
+  //   (make == 'Audi' || 
+  //   make == 'Mercedes-Benz' || 
+  //   make == 'Volkswagen' || 
+  //   make == 'BMW') {
+    (inventory[i].car_make == 'Audi' || 
+    inventory[i].car_make == 'Mercedes-Benz' || 
+    inventory[i].car_make == 'Volkswagen' || 
+    inventory[i].car_make == 'BMW') {
+      // console.log(i)
+      // console.log(inventory[i])
+      germanCars.push(inventory[i])
+    }
+  }
+  return germanCars
+
+
+  // for (let i = 0; i < inventory.length; i++) {
+  //   // console.log(i)
+  //   let german_makes = ['Audi', 'Mercedes-Benz', 'Volkswagon', 'BMW']
+  //   if (inventory[i].car_make.includes(german_makes)) {
+  //     console.log(inventory[i])
+  //   }
+  // }
+
 }
 
 /**
@@ -274,8 +317,15 @@ const argTimesTwo = (num) => { return num * 2; }; // code here!
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
+function carMaker(odometer) {
   /* code here */
+  let myObj = {
+    odometer: odometer,
+    drive: function(distance) {
+      return this.odometer += distance
+    }
+  }
+  return myObj;
 }
 
 /// ////// END OF CHALLENGE /////////
