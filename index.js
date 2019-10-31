@@ -37,8 +37,12 @@ function exampleFunction(num1, num2) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject(id, name, email) {
+  return {
+    id: id,
+    name: name,
+    email: email
+  }
 }
 
 /**
@@ -54,8 +58,11 @@ function makePersonObject(/* code here */) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
+
+function getName(personObj) {
+  // console.log(personObj.name)
+  let x = `Hello, my name is ${personObj.name}`
+  return x;
 }
 
 /**
@@ -71,8 +78,19 @@ function getName(/* code here */) {
  *         and returns a string like `Hello, my name is {name}`.
  *         where `{name}` is the name passed into `makeSmartPerson`.
 */
-function makeSmartPerson(/* code here */) {
+function makeSmartPerson(nameString) {
   /* code here */
+  // console.log(nameString)
+  let myObj = {
+    name: nameString,
+    sum: function(x,y) {
+      return x + y
+    },
+    speak: function() {
+      return `Hello, my name is ${myObj.name}`
+    }
+  }
+  return myObj;
 }
 
 /**
@@ -87,8 +105,11 @@ function makeSmartPerson(/* code here */) {
  * For example, if getCarInfoByIndex is invoked with the inventory and the number 0,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoByIndex(/* code here */) {
+function getCarInfoByIndex(arg1, arg2) {
+  // console.log(arg1)
+  // console.log(arg2)
   /* code here */
+  return `This is a ${arg1[arg2].car_make} ${arg1[arg2].car_model}`
 }
 
 /**
@@ -102,8 +123,10 @@ function getCarInfoByIndex(/* code here */) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
+function getLastCarInfo(arg1) {
   /* code here */
+  // console.log(arg1.length)
+  return `This is a ${arg1[arg1.length-1].car_make} ${arg1[arg1.length-1].car_model}`
 }
 
 /**
@@ -118,8 +141,18 @@ function getLastCarInfo(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
+function getCarInfoById(inventory, id) {
   /* code here */
+  // console.log(inventory)
+  // console.log(id)
+  for (let i=0; i < inventory.length; i++) {
+    // console.log(i)
+    // console.log(inventory[i])
+    // console.log('this is the id: ', inventory[i].id)
+    if (inventory[i].id == id) {
+      return `this is a ${inventory[i].car_make} ${inventory[i].car_model}`
+    }
+  }
 }
 
 /**
@@ -130,8 +163,35 @@ function getCarInfoById(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
-function sortCarInventory(/* code here */) {
+function sortCarInventory(inventory) {
   /* code here */
+  // console.log(inventory)
+  // let keysSorted = Object.keys(...inventory).sort()
+  // console.log(keysSorted)
+  // let copyOfInventory = [...inventory]
+
+  // copyOfInventory.sort(function(a, b){return a.car_year - b.car_year})
+  // console.log(copyOfInventory)
+
+  // copyOfInventory.sort(function(a,b) {
+  //   var x = a.car_model.toLowerCase();
+  //   var y = b.car_model.toLowerCase();
+  //   if (x < y) {return -1;}
+  //   if (x > y) {return 1;}
+  //   return 0;
+  // });
+
+  // console.log(copyOfInventory)
+
+  inventory.sort(function(a,b) {
+    var x = a.car_model.toLowerCase();
+    var y = b.car_model.toLowerCase();
+    if (x < y) {return -1;}
+    if (x > y) {return 1;}
+    return 0;
+  });
+  // console.log(inventory)
+  return inventory
 }
 
 /**
@@ -145,6 +205,7 @@ function sortCarInventory(/* code here */) {
 */
 function getModelYears(/* code here */) {
   /* code here */
+
 }
 
 /**
