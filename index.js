@@ -226,8 +226,8 @@ function getModelYears(inventory) {
 */
 function getOlderCars(inventory, year) {
   /* code here */
-  console.log(inventory)
-  console.log(year)
+  // console.log(inventory)
+  // console.log(year)
   let olderCars = []
   for (let i = 0; i < inventory.length; i++) {
     if (inventory[i].car_year <= year) {
